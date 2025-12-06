@@ -6,10 +6,11 @@ packages:
 
 ansible:
   install_method: pip
+  package_name: ansible-core
   setup_controller:
     repositories:
       - source: https://github.com/yamause/ansible-advent-calendar-2025.git
-        path: .
+        path: /root/ansible-advent-calendar-2025
     run_ansible:
       - playbook_name: site.yml
-        playbook_dir: ./ansible-advent-calendar-2025/plyabooks
+        playbook_dir: /root/ansible-advent-calendar-2025/plyabooks
