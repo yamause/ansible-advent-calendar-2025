@@ -1,0 +1,15 @@
+#cloud-config
+package_update: true
+package_upgrade: true
+packages:
+  - git
+
+ansible:
+  install_method: pip
+  setup_controller:
+    repositories:
+      - source: https://github.com/yamause/ansible-advent-calendar-2025.git
+        path: .
+    run_ansible:
+      - playbook_name: site.yml
+        playbook_dir: ./ansible-advent-calendar-2025/plyabooks

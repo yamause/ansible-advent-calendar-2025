@@ -1,0 +1,27 @@
+---
+- name: Ansible Advent Calendar 2025 Day 14 - cloud-init example playbook
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  tasks:
+    - name: Install cowsay package
+      ansible.builtin.package:
+        name: cowsay
+        state: present
+
+    - name: Create a Advent Calendar message file
+      ansible.builtin.copy:
+        dest: /tmp/advent_message.txt
+        content: |
+          Happy Holidays from Ansible Advent Calendar 2025!
+          Enjoy using cloud-init with Ansible.
+        mode: '0644'
+
+    - name: Display the Advent Calendar message using cowsay
+      ansible.builtin.command: cowsay -f tux "Happy Holidays from Ansible Advent Calendar 2025!"
+      register: cowsay_output
+      changed_when: cowsay_output.rc != 0
+
+    - name: Show cowsay output
+      ansible.builtin.debug:
+        var: cowsay_output.stdout
