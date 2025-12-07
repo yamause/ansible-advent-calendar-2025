@@ -12,7 +12,7 @@
     - name: Display the Advent Calendar message using cowsay
       ansible.builtin.command: /usr/games/cowsay -f tux "Happy Holidays from Ansible Advent Calendar 2025!"
       register: cowsay_output
-      changed_when: cowsay_output.rc != 0
+      changed_when: false
 
     - name: Create a Advent Calendar message file
       ansible.builtin.copy:
